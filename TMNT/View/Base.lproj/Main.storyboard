@@ -52,7 +52,8 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Начать"/>
                                         <connections>
-                                            <segue destination="ZfG-rv-rRt" kind="show" id="PWd-ev-9vd"/>
+                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sxr-OH-8le"/>
+                                            <segue destination="Lnb-Kg-5An" kind="show" identifier="toQuestionsViewController" id="Eg6-GB-Cd9"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -82,6 +83,7 @@
                             <constraint firstItem="ie3-1o-Wd1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ueQ-nO-PY1" secondAttribute="trailing" id="uip-id-Zfh"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="8td-3v-6DX"/>
                     <connections>
                         <outlet property="welcomeButton" destination="bpO-HO-cBO" id="HeI-p5-aLO"/>
                         <outlet property="welcomeLabel" destination="DtR-Pj-P2D" id="0Pq-pJ-Q8Z"/>
@@ -102,23 +104,106 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34.782608695652179" y="83.705357142857139"/>
+            <point key="canvasLocation" x="944.92753623188412" y="83.705357142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Questions View Controller-->
         <scene sceneID="XEx-Kh-n4x">
             <objects>
-                <viewController id="ZfG-rv-rRt" sceneMemberID="viewController">
+                <viewController id="ZfG-rv-rRt" customClass="QuestionsViewController" customModule="TMNT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P6i-h6-uky">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JXz-Ey-dfO">
+                                <rect key="frame" x="121" y="325" width="172" height="192"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCj-G2-pwz">
+                                        <rect key="frame" x="0.0" y="0.0" width="172" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Фиолетовый">
+                                            <color key="titleColor" systemColor="systemPurpleColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eT1-Jy-nwv">
+                                        <rect key="frame" x="0.0" y="48" width="172" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Синий"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8n-tp-8EU">
+                                        <rect key="frame" x="0.0" y="96" width="172" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Оранжевый">
+                                            <color key="titleColor" systemColor="systemOrangeColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZIk-I6-fLQ">
+                                        <rect key="frame" x="0.0" y="144" width="172" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Красный">
+                                            <color key="titleColor" systemColor="systemRedColor"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JHc-Pb-ejV">
+                                <rect key="frame" x="20" y="818" width="374" height="4"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Какой цвет тебе нравится больше?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="CHI-Nx-ZBG">
+                                <rect key="frame" x="20" y="76" width="374" height="67"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="gV5-Wo-vYH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CHI-Nx-ZBG" firstAttribute="top" secondItem="gV5-Wo-vYH" secondAttribute="top" constant="20" id="13t-WJ-Bjd"/>
+                            <constraint firstItem="JXz-Ey-dfO" firstAttribute="centerY" secondItem="P6i-h6-uky" secondAttribute="centerY" id="F6I-33-jME"/>
+                            <constraint firstItem="gV5-Wo-vYH" firstAttribute="bottom" secondItem="JHc-Pb-ejV" secondAttribute="bottom" constant="20" id="H9v-Uv-bZr"/>
+                            <constraint firstItem="gV5-Wo-vYH" firstAttribute="trailing" secondItem="JHc-Pb-ejV" secondAttribute="trailing" constant="20" id="IBi-3k-crs"/>
+                            <constraint firstItem="gV5-Wo-vYH" firstAttribute="trailing" secondItem="CHI-Nx-ZBG" secondAttribute="trailing" constant="20" id="KaI-Le-dyf"/>
+                            <constraint firstItem="JHc-Pb-ejV" firstAttribute="leading" secondItem="gV5-Wo-vYH" secondAttribute="leading" constant="20" id="Or8-bs-Ilg"/>
+                            <constraint firstItem="JXz-Ey-dfO" firstAttribute="centerX" secondItem="P6i-h6-uky" secondAttribute="centerX" id="ZJR-Ae-WHn"/>
+                            <constraint firstItem="CHI-Nx-ZBG" firstAttribute="leading" secondItem="gV5-Wo-vYH" secondAttribute="leading" constant="20" id="e6F-xP-BdR"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="97U-ds-fUc"/>
+                    <connections>
+                        <outlet property="QuestionLabel" destination="CHI-Nx-ZBG" id="gjv-4v-wSD"/>
+                        <outlet property="progressLine" destination="JHc-Pb-ejV" id="M2P-qj-l33"/>
+                        <outletCollection property="listOfButtonsForFirstQuestion" destination="XCj-G2-pwz" collectionClass="NSMutableArray" id="EJr-j0-UUP"/>
+                        <outletCollection property="listOfButtonsForFirstQuestion" destination="eT1-Jy-nwv" collectionClass="NSMutableArray" id="vlV-2w-csc"/>
+                        <outletCollection property="listOfButtonsForFirstQuestion" destination="O8n-tp-8EU" collectionClass="NSMutableArray" id="QlG-Ye-JMl"/>
+                        <outletCollection property="listOfButtonsForFirstQuestion" destination="ZIk-I6-fLQ" collectionClass="NSMutableArray" id="clj-cZ-JVK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgW-rH-AfJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="871" y="84"/>
+            <point key="canvasLocation" x="2759" y="84"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zKW-Mj-naL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lnb-Kg-5An" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="fyP-dQ-OhP"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="meS-Yz-q2T">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZfG-rv-rRt" kind="relationship" relationship="rootViewController" id="56x-zT-fev"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AFj-mQ-xJL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1849" y="84"/>
         </scene>
     </scenes>
     <resources>
@@ -128,6 +213,15 @@
         <image name="raphael@x1" width="170" height="170"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

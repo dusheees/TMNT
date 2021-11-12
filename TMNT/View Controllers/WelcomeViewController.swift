@@ -17,6 +17,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet var listOfConstrains: [NSLayoutConstraint]!
     
     
+    
     // MARK: - Properties
     var size: CGSize!
     var factor: CGFloat!
@@ -26,7 +27,6 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         size = view.bounds.size
         factor = min(size.width, size.height)
-        print("size = ", size.width)
         
         correctSize()
     }
@@ -65,7 +65,21 @@ class WelcomeViewController: UIViewController {
         
         return value
     }
+    
+    // passing parameters through the navigation controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navigationController = segue.destination as? UINavigationController, let myViewController = navigationController.viewControllers.first as? QuestionsViewController else {
+            return
+        }
 
-
+        myViewController.size = size
+        myViewController.factor = factor
+    }
+    
+    // MARK: - Actions
+    @IBAction func buttonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "toQuestionsViewController", sender: nil)
+    }
+    
 }
 
