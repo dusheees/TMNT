@@ -123,8 +123,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="n4W-Yu-5pY">
-                                <rect key="frame" x="20" y="343" width="374" height="156"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="n4W-Yu-5pY">
+                                <rect key="frame" x="20" y="339" width="374" height="164"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="214" translatesAutoresizingMaskIntoConstraints="NO" id="VFA-2I-7Mw">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
@@ -144,12 +144,20 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="jgj-pR-hga" firstAttribute="top" secondItem="VFA-2I-7Mw" secondAttribute="top" priority="750" id="F6b-FC-q6i"/>
+                                            <constraint firstItem="jzr-Ec-DzF" firstAttribute="top" secondItem="VFA-2I-7Mw" secondAttribute="top" priority="750" id="LEU-Qh-OUK"/>
+                                            <constraint firstAttribute="trailing" secondItem="jzr-Ec-DzF" secondAttribute="trailing" id="RS3-oN-3PO"/>
+                                            <constraint firstItem="jgj-pR-hga" firstAttribute="leading" secondItem="VFA-2I-7Mw" secondAttribute="leading" id="V7Y-wi-QUY"/>
+                                            <constraint firstAttribute="bottom" secondItem="jgj-pR-hga" secondAttribute="bottom" priority="750" id="ZTv-qp-SU9"/>
+                                            <constraint firstAttribute="bottom" secondItem="jzr-Ec-DzF" secondAttribute="bottom" priority="750" id="oJL-dE-l1c"/>
+                                        </constraints>
                                     </stackView>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="t3z-wj-7Pt">
-                                        <rect key="frame" x="-2" y="91" width="378" height="31"/>
+                                        <rect key="frame" x="-2" y="95" width="378" height="31"/>
                                     </slider>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="157" translatesAutoresizingMaskIntoConstraints="NO" id="Vml-tN-Yfb">
-                                        <rect key="frame" x="0.0" y="132" width="374" height="24"/>
+                                        <rect key="frame" x="0.0" y="140" width="374" height="24"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="в одиночку" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sk-Ek-yvj">
                                                 <rect key="frame" x="0.0" y="0.0" width="102.5" height="24"/>
@@ -166,6 +174,11 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="VFA-2I-7Mw" secondAttribute="trailing" id="ILb-oH-BUR"/>
+                                    <constraint firstItem="VFA-2I-7Mw" firstAttribute="leading" secondItem="n4W-Yu-5pY" secondAttribute="leading" id="cKy-D4-JWm"/>
+                                    <constraint firstItem="VFA-2I-7Mw" firstAttribute="top" secondItem="n4W-Yu-5pY" secondAttribute="top" priority="750" id="yDc-2q-Hlt"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JXz-Ey-dfO">
                                 <rect key="frame" x="121" y="325" width="172" height="192"/>
@@ -294,8 +307,11 @@
                         <outlet property="progressLine" destination="JHc-Pb-ejV" id="M2P-qj-l33"/>
                         <outlet property="stackViewFirstBC" destination="3P8-HJ-amS" id="Qf8-JR-IKO"/>
                         <outlet property="stackViewFirstQuestion" destination="JXz-Ey-dfO" id="NEw-U4-Hui"/>
+                        <outlet property="stackViewImagesThirdQuestion" destination="VFA-2I-7Mw" id="ayD-QE-CCq"/>
+                        <outlet property="stackViewLabelThirdQuestion" destination="Vml-tN-Yfb" id="FYd-tG-VRc"/>
                         <outlet property="stackViewSecondQuestion" destination="K38-xK-aow" id="L9N-sR-Qrw"/>
                         <outlet property="stackViewSecondSV" destination="eTY-vC-BXe" id="tuG-ep-qLF"/>
+                        <outlet property="stackViewThirdQuestion" destination="n4W-Yu-5pY" id="tSq-zU-Sir"/>
                         <outletCollection property="listOfButtonsForFirstQuestion" destination="XCj-G2-pwz" collectionClass="NSMutableArray" id="EJr-j0-UUP"/>
                         <outletCollection property="listOfButtonsForFirstQuestion" destination="eT1-Jy-nwv" collectionClass="NSMutableArray" id="vlV-2w-csc"/>
                         <outletCollection property="listOfButtonsForFirstQuestion" destination="O8n-tp-8EU" collectionClass="NSMutableArray" id="QlG-Ye-JMl"/>
@@ -304,6 +320,10 @@
                         <outletCollection property="listOfImagesForSecondQuestion" destination="96f-S6-bd9" collectionClass="NSMutableArray" id="rkd-4W-ryg"/>
                         <outletCollection property="listOfImagesForSecondQuestion" destination="Mc8-H1-G2W" collectionClass="NSMutableArray" id="Nsl-9T-Fqf"/>
                         <outletCollection property="listOfImagesForSecondQuestion" destination="xcu-f4-5jh" collectionClass="NSMutableArray" id="SPu-Rs-Q2a"/>
+                        <outletCollection property="listOfImagesForThirdQuestion" destination="jgj-pR-hga" collectionClass="NSMutableArray" id="N53-Ig-Gne"/>
+                        <outletCollection property="listOfImagesForThirdQuestion" destination="jzr-Ec-DzF" collectionClass="NSMutableArray" id="GCJ-fp-KwH"/>
+                        <outletCollection property="listOfLabelsForThirdQuestion" destination="1Sk-Ek-yvj" collectionClass="NSMutableArray" id="1ET-S1-brH"/>
+                        <outletCollection property="listOfLabelsForThirdQuestion" destination="cv1-cc-B7o" collectionClass="NSMutableArray" id="HnL-Ss-X4d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgW-rH-AfJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

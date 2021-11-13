@@ -28,13 +28,22 @@ class QuestionsViewController: UIViewController {
             }
         }
     }
+    // third question
+    @IBOutlet weak var stackViewThirdQuestion: UIStackView!
+    @IBOutlet weak var stackViewImagesThirdQuestion: UIStackView!
+    @IBOutlet weak var stackViewLabelThirdQuestion: UIStackView!
+    @IBOutlet var listOfImagesForThirdQuestion: [UIImageView]!
+    @IBOutlet var listOfLabelsForThirdQuestion: [UILabel]!
+    
     
     
     // MARK: - Properties
     var size: CGSize!
     var factor: CGFloat!
+    
     var firstQuestion: FirstQuestion!
     var secondQuestion: SecondQuestion!
+    var thirdQuestion: ThirdQuestion!
     
     // MARK: - Methods
     override func viewDidLoad() {
@@ -45,7 +54,7 @@ class QuestionsViewController: UIViewController {
         // second question
         secondQuestion = SecondQuestion(listOfImagesForSecondQuestion: listOfImagesForSecondQuestion, size: size, factor: factor)
         // third question
-        
+        thirdQuestion = ThirdQuestion(listOfImagesForThirdQuestion: listOfImagesForThirdQuestion, listOfLabelsForThirdQuestion: listOfLabelsForThirdQuestion, size: size, factor: factor)
         
         correctSize()
     }
@@ -66,7 +75,10 @@ class QuestionsViewController: UIViewController {
         listOfImagesForSecondQuestion = secondQuestion.correctSizes()
         
         // third question settings
-        
+//        stackViewThirdQuestion.spacing = thirdQuestion.correctSpacing()
+//        stackViewImagesThirdQuestion.spacing = thirdQuestion.correctSpacing()
+        listOfImagesForThirdQuestion = thirdQuestion.correctSizesImageView()
+        listOfLabelsForThirdQuestion = thirdQuestion.correctSizesLabels()
     }
     
     // MARK: - Actions
