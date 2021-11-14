@@ -75,4 +75,5 @@ struct ThirdQuestion {
         labelLeftThirdQuestion.font = UIFont.systemFont(ofSize: factor / 30)
         labelRightThirdQuestion.font = UIFont.systemFont(ofSize: factor / 30)
     }
+    
 }

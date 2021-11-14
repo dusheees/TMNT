@@ -14,10 +14,47 @@ class QuestionsViewController: UIViewController {
     // general
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var progressLine: UIProgressView!
-    // first question
-    @IBOutlet weak var stackViewFirstQuestion: UIStackView!
-    @IBOutlet var listOfButtonsForFirstQuestion: [UIButton]!
-    // second question
+    // FIRST QUESTION
+    var firstQuestionView: UIView = {
+        var firstQuestionView = UIView()
+        firstQuestionView.translatesAutoresizingMaskIntoConstraints = false
+        firstQuestionView.backgroundColor = .white
+        return firstQuestionView
+    }()
+    var purpleButtonFirstQuestion: UIButton = {
+        var purpleButtonFirstQuestion = UIButton()
+        purpleButtonFirstQuestion.translatesAutoresizingMaskIntoConstraints = false
+        purpleButtonFirstQuestion.setTitle("Фиолетовый", for: .normal)
+        purpleButtonFirstQuestion.setTitleColor(.purple, for: .normal)
+        purpleButtonFirstQuestion.tag = 0
+        return purpleButtonFirstQuestion
+    }()
+    var blueButtonFirstQuestion: UIButton = {
+        var blueButtonFirstQuestion = UIButton()
+        blueButtonFirstQuestion.translatesAutoresizingMaskIntoConstraints = false
+        blueButtonFirstQuestion.setTitle("Синий", for: .normal)
+        blueButtonFirstQuestion.setTitleColor(.systemBlue, for: .normal)
+        blueButtonFirstQuestion.tag = 1
+        return blueButtonFirstQuestion
+    }()
+    var orangeButtonFirstQuestion: UIButton = {
+        var orangeButtonFirstQuestion = UIButton()
+        orangeButtonFirstQuestion.translatesAutoresizingMaskIntoConstraints = false
+        orangeButtonFirstQuestion.setTitle("Оранжевый", for: .normal)
+        orangeButtonFirstQuestion.setTitleColor(.systemOrange, for: .normal)
+        orangeButtonFirstQuestion.tag = 2
+        return orangeButtonFirstQuestion
+    }()
+    var redButtonFirstQuestion: UIButton = {
+        var redButtonFirstQuestion = UIButton()
+        redButtonFirstQuestion.translatesAutoresizingMaskIntoConstraints = false
+        redButtonFirstQuestion.setTitle("Красный", for: .normal)
+        redButtonFirstQuestion.setTitleColor(.systemRed, for: .normal)
+        redButtonFirstQuestion.tag = 3
+        return redButtonFirstQuestion
+    }()
+    
+    // SECOND QUESTION
     var secondQuestionView: UIView = {
         var secondQuestionView = UIView()
         secondQuestionView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,8 +93,8 @@ class QuestionsViewController: UIViewController {
         imageViewRightBottom.tag = 3
         return imageViewRightBottom
     }()
-    var listOfImagesSecondQuestion = [UIImageView]()
-    // third question
+    
+    // THIRD QUESTION
     var thirdQuestionView: UIView = {
         var thirdQuestionView = UIView()
         thirdQuestionView.translatesAutoresizingMaskIntoConstraints = false
@@ -106,15 +143,29 @@ class QuestionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // first question
-        firstQuestion = FirstQuestion(listOfButtonsForFirstQuestion: listOfButtonsForFirstQuestion, factor: factor)
-        // second question
+        // FIRST QUESTION
+        view.addSubview(firstQuestionView)
+        firstQuestionView.addSubview(purpleButtonFirstQuestion)
+        firstQuestionView.addSubview(blueButtonFirstQuestion)
+        firstQuestionView.addSubview(orangeButtonFirstQuestion)
+        firstQuestionView.addSubview(redButtonFirstQuestion)
+        
+        purpleButtonFirstQuestion.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        blueButtonFirstQuestion.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        orangeButtonFirstQuestion.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        redButtonFirstQuestion.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        
+        firstQuestion = FirstQuestion(factor: factor, view: view, questionLabel: questionLabel, firstQuestionView: firstQuestionView, purpleButtonFirstQuestion: purpleButtonFirstQuestion, blueButtonFirstQuestion: blueButtonFirstQuestion, orangeButtonFirstQuestion: orangeButtonFirstQuestion, redButtonFirstQuestion: redButtonFirstQuestion)
+        firstQuestion.addConstraints()
+        firstQuestion.correctSize()
+//        firstQuestionView.isHidden = true
+        
+        // SECOND QUESTION
         view.addSubview(secondQuestionView)
         secondQuestionView.addSubview(imageViewLeftTopSecondQuestion)
         secondQuestionView.addSubview(imageViewRightTopSecondQuestion)
         secondQuestionView.addSubview(imageViewLeftBottomSecondQuestion)
         secondQuestionView.addSubview(imageViewRightBottomSecondQuestion)
-        listOfImagesSecondQuestion = [imageViewLeftTopSecondQuestion, imageViewRightTopSecondQuestion, imageViewLeftBottomSecondQuestion, imageViewRightBottomSecondQuestion]
         
         let gestureRecognizerLeftTop = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
         let gestureRecognizerRightTop = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
@@ -128,14 +179,16 @@ class QuestionsViewController: UIViewController {
         
         secondQuestion = SecondQuestion(view: view, questionLabel: questionLabel, secondQuestionView: secondQuestionView, imageViewLeftTopSecondQuestion: imageViewLeftTopSecondQuestion, imageViewRightTopSecondQuestion: imageViewRightTopSecondQuestion, imageViewLeftBottomSecondQuestion:  imageViewLeftBottomSecondQuestion, imageViewRightBottomSecondQuestion: imageViewRightBottomSecondQuestion)
         secondQuestion.addConstraints()
-//        secondQuestionView.isHidden = true
-        // third question
+        secondQuestionView.isHidden = true
+        
+        // THIRD QUESTION
         view.addSubview(thirdQuestionView)
         thirdQuestionView.addSubview(imageViewLeftThirdQuestion)
         thirdQuestionView.addSubview(imageViewRightThirdQuestion)
         thirdQuestionView.addSubview(slider)
         thirdQuestionView.addSubview(labelLeftThirdQuestion)
         thirdQuestionView.addSubview(labelRightThirdQuestion)
+        
         thirdQuestion = ThirdQuestion(view: view, questionLabel: questionLabel, thirdQuestionView: thirdQuestionView, imageViewLeftThirdQuestion: imageViewLeftThirdQuestion, imageViewRightThirdQuestion: imageViewRightThirdQuestion, slider: slider, labelLeftThirdQuestion: labelLeftThirdQuestion, labelRightThirdQuestion: labelRightThirdQuestion, factor: factor)
         thirdQuestion.addConstraints()
         thirdQuestion.correctSize()
@@ -148,20 +201,20 @@ class QuestionsViewController: UIViewController {
         // general settings
         // set up QuestionLabel
         questionLabel.font = UIFont.systemFont(ofSize: factor / 16)
+    }
 
-        // first question settings
-        listOfButtonsForFirstQuestion = firstQuestion.correctSizes()
-        
-        // second question settings
-
-        
+    // MARK: - Operations
+    // FIRST QUESTION
+    @objc func buttonPressed(_ sender: UIButton) {
+        firstQuestion.sender = sender.tag
+        firstQuestion.buttonPressed()
     }
     
+    // SECOND QUESTION
     @objc func tap(_ gesture: UITapGestureRecognizer) {
-        print("tap")
+        secondQuestion.gesture = gesture.view?.tag
+        secondQuestion.tap()
     }
-
-    // MARK: - Actions
-
+    
 }
 

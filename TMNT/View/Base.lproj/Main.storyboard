@@ -123,70 +123,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JXz-Ey-dfO">
-                                <rect key="frame" x="121" y="325" width="172" height="192"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCj-G2-pwz">
-                                        <rect key="frame" x="0.0" y="0.0" width="172" height="48"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Фиолетовый">
-                                            <color key="titleColor" systemColor="systemPurpleColor"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eT1-Jy-nwv">
-                                        <rect key="frame" x="0.0" y="48" width="172" height="48"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Синий"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8n-tp-8EU">
-                                        <rect key="frame" x="0.0" y="96" width="172" height="48"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Оранжевый">
-                                            <color key="titleColor" systemColor="systemOrangeColor"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZIk-I6-fLQ">
-                                        <rect key="frame" x="0.0" y="144" width="172" height="48"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Красный">
-                                            <color key="titleColor" systemColor="systemRedColor"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gV5-Wo-vYH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="CHI-Nx-ZBG" firstAttribute="top" secondItem="gV5-Wo-vYH" secondAttribute="top" constant="20" id="13t-WJ-Bjd"/>
-                            <constraint firstItem="JXz-Ey-dfO" firstAttribute="centerY" secondItem="P6i-h6-uky" secondAttribute="centerY" id="F6I-33-jME"/>
                             <constraint firstItem="gV5-Wo-vYH" firstAttribute="bottom" secondItem="JHc-Pb-ejV" secondAttribute="bottom" constant="20" id="H9v-Uv-bZr"/>
                             <constraint firstItem="gV5-Wo-vYH" firstAttribute="trailing" secondItem="JHc-Pb-ejV" secondAttribute="trailing" constant="20" id="IBi-3k-crs"/>
                             <constraint firstItem="gV5-Wo-vYH" firstAttribute="trailing" secondItem="CHI-Nx-ZBG" secondAttribute="trailing" constant="20" id="KaI-Le-dyf"/>
                             <constraint firstItem="JHc-Pb-ejV" firstAttribute="leading" secondItem="gV5-Wo-vYH" secondAttribute="leading" constant="20" id="Or8-bs-Ilg"/>
-                            <constraint firstItem="JXz-Ey-dfO" firstAttribute="centerX" secondItem="P6i-h6-uky" secondAttribute="centerX" id="ZJR-Ae-WHn"/>
                             <constraint firstItem="CHI-Nx-ZBG" firstAttribute="leading" secondItem="gV5-Wo-vYH" secondAttribute="leading" constant="20" id="e6F-xP-BdR"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="JXz-Ey-dfO"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="97U-ds-fUc"/>
                     <connections>
                         <outlet property="progressLine" destination="JHc-Pb-ejV" id="M2P-qj-l33"/>
                         <outlet property="questionLabel" destination="CHI-Nx-ZBG" id="gjv-4v-wSD"/>
-                        <outlet property="stackViewFirstQuestion" destination="JXz-Ey-dfO" id="NEw-U4-Hui"/>
-                        <outletCollection property="listOfButtonsForFirstQuestion" destination="XCj-G2-pwz" collectionClass="NSMutableArray" id="EJr-j0-UUP"/>
-                        <outletCollection property="listOfButtonsForFirstQuestion" destination="eT1-Jy-nwv" collectionClass="NSMutableArray" id="vlV-2w-csc"/>
-                        <outletCollection property="listOfButtonsForFirstQuestion" destination="O8n-tp-8EU" collectionClass="NSMutableArray" id="QlG-Ye-JMl"/>
-                        <outletCollection property="listOfButtonsForFirstQuestion" destination="ZIk-I6-fLQ" collectionClass="NSMutableArray" id="clj-cZ-JVK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgW-rH-AfJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -220,15 +173,6 @@
         <image name="raphael@x1" width="170" height="170"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

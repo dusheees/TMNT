@@ -16,6 +16,9 @@ struct SecondQuestion {
     var imageViewLeftBottomSecondQuestion: UIImageView
     var imageViewRightBottomSecondQuestion: UIImageView
     
+    // MARK: - Properties
+    var gesture: Int!
+    
     init(view: UIView, questionLabel: UILabel, secondQuestionView: UIView, imageViewLeftTopSecondQuestion: UIImageView, imageViewRightTopSecondQuestion: UIImageView, imageViewLeftBottomSecondQuestion: UIImageView, imageViewRightBottomSecondQuestion: UIImageView) {
         self.view = view
         self.questionLabel = questionLabel
@@ -26,6 +29,7 @@ struct SecondQuestion {
         self.imageViewRightBottomSecondQuestion = imageViewRightBottomSecondQuestion
     }
     
+    // MARK: - Methods
     func addConstraints() {
         let size = UIScreen.main.bounds
         NSLayoutConstraint.activate([
@@ -62,6 +66,22 @@ struct SecondQuestion {
             imageViewRightBottomSecondQuestion.heightAnchor.constraint(equalToConstant: size.width * 0.25),
             imageViewRightBottomSecondQuestion.widthAnchor.constraint(equalToConstant: size.width * 0.25),
         ])
+    }
+    
+    // MARK: - Operations
+    func tap() {
+        switch gesture {
+        case 0:
+            print("Batman")
+        case 1:
+            print("Captain - America")
+        case 2:
+            print("Spider - man")
+        case 3:
+            print("Darth - Vader")
+        default:
+            print("fatal error")
+        }
     }
 
 }
