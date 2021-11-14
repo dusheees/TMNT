@@ -12,7 +12,7 @@ class QuestionsViewController: UIViewController {
 
     // MARK: - UIProperties
     // general
-    @IBOutlet weak var QuestionLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var progressLine: UIProgressView!
     // first question
     @IBOutlet weak var stackViewFirstQuestion: UIStackView!
@@ -29,13 +29,41 @@ class QuestionsViewController: UIViewController {
         }
     }
     // third question
-    @IBOutlet weak var stackViewThirdQuestion: UIStackView!
-    @IBOutlet weak var stackViewImagesThirdQuestion: UIStackView!
-    @IBOutlet weak var stackViewLabelThirdQuestion: UIStackView!
-    @IBOutlet var listOfImagesForThirdQuestion: [UIImageView]!
-    @IBOutlet var listOfLabelsForThirdQuestion: [UILabel]!
-    
-    
+    var thirdQuestionView: UIView = {
+        var thirdQuestionView = UIView()
+        thirdQuestionView.translatesAutoresizingMaskIntoConstraints = false
+        thirdQuestionView.backgroundColor = .white
+        return thirdQuestionView
+    }()
+    var imageViewLeftThirdQuestion: UIImageView = {
+        var imageViewLeftThirdQuestion = UIImageView()
+        imageViewLeftThirdQuestion.translatesAutoresizingMaskIntoConstraints = false
+        imageViewLeftThirdQuestion.image = UIImage(named: "alone@x1")
+        return imageViewLeftThirdQuestion
+    }()
+    var imageViewRightThirdQuestion: UIImageView = {
+        var imageViewRightThirdQuestion = UIImageView()
+        imageViewRightThirdQuestion.translatesAutoresizingMaskIntoConstraints = false
+        imageViewRightThirdQuestion.image = UIImage(named: "team@x1")
+        return imageViewRightThirdQuestion
+    }()
+    var slider: UISlider = {
+        var slider = UISlider()
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        return slider
+    }()
+    var labelLeftThirdQuestion: UILabel = {
+        var label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "в одиночку"
+        return label
+    }()
+    var labelRightThirdQuestion: UILabel = {
+        var label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "в команде"
+        return label
+    }()
     
     // MARK: - Properties
     var size: CGSize!
@@ -54,16 +82,22 @@ class QuestionsViewController: UIViewController {
         // second question
         secondQuestion = SecondQuestion(listOfImagesForSecondQuestion: listOfImagesForSecondQuestion, size: size, factor: factor)
         // third question
-        thirdQuestion = ThirdQuestion(listOfImagesForThirdQuestion: listOfImagesForThirdQuestion, listOfLabelsForThirdQuestion: listOfLabelsForThirdQuestion, size: size, factor: factor)
-        
+        view.addSubview(thirdQuestionView)
+        thirdQuestionView.addSubview(imageViewLeftThirdQuestion)
+        thirdQuestionView.addSubview(imageViewRightThirdQuestion)
+        thirdQuestionView.addSubview(slider)
+        thirdQuestionView.addSubview(labelLeftThirdQuestion)
+        thirdQuestionView.addSubview(labelRightThirdQuestion)
+        thirdQuestion = ThirdQuestion(view: view, questionLabel: questionLabel, thirdQuestionView: thirdQuestionView, imageViewLeftThirdQuestion: imageViewLeftThirdQuestion, imageViewRightThirdQuestion: imageViewRightThirdQuestion, slider: slider, labelLeftThirdQuestion: labelLeftThirdQuestion, labelRightThirdQuestion: labelRightThirdQuestion, size: size, factor: factor)
+        thirdQuestion.addConstraints()
+        thirdQuestion.correctSize()
         correctSize()
     }
     
-    
-    func correctSize() {
+    private func correctSize() {
         // general settings
         // set up QuestionLabel
-        QuestionLabel.font = UIFont.systemFont(ofSize: factor / 16)
+        questionLabel.font = UIFont.systemFont(ofSize: factor / 16)
 
         // first question settings
         listOfButtonsForFirstQuestion = firstQuestion.correctSizes()
@@ -74,11 +108,6 @@ class QuestionsViewController: UIViewController {
         stackViewSecondSV.spacing = secondQuestion.correctSpacing()
         listOfImagesForSecondQuestion = secondQuestion.correctSizes()
         
-        // third question settings
-//        stackViewThirdQuestion.spacing = thirdQuestion.correctSpacing()
-//        stackViewImagesThirdQuestion.spacing = thirdQuestion.correctSpacing()
-        listOfImagesForThirdQuestion = thirdQuestion.correctSizesImageView()
-        listOfLabelsForThirdQuestion = thirdQuestion.correctSizesLabels()
     }
     
     // MARK: - Actions

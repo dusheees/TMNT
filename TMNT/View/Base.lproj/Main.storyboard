@@ -123,63 +123,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="n4W-Yu-5pY">
-                                <rect key="frame" x="20" y="339" width="374" height="164"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="214" translatesAutoresizingMaskIntoConstraints="NO" id="VFA-2I-7Mw">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alone@x1" translatesAutoresizingMaskIntoConstraints="NO" id="jgj-pR-hga">
-                                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="80" id="3mB-Ws-eVe"/>
-                                                    <constraint firstAttribute="height" constant="80" id="GjC-wE-rsu"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team@x1" translatesAutoresizingMaskIntoConstraints="NO" id="jzr-Ec-DzF">
-                                                <rect key="frame" x="294" y="0.0" width="80" height="80"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="80" id="0nv-qi-fYu"/>
-                                                    <constraint firstAttribute="width" constant="80" id="B6F-0x-uaa"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="jgj-pR-hga" firstAttribute="top" secondItem="VFA-2I-7Mw" secondAttribute="top" priority="750" id="F6b-FC-q6i"/>
-                                            <constraint firstItem="jzr-Ec-DzF" firstAttribute="top" secondItem="VFA-2I-7Mw" secondAttribute="top" priority="750" id="LEU-Qh-OUK"/>
-                                            <constraint firstAttribute="trailing" secondItem="jzr-Ec-DzF" secondAttribute="trailing" id="RS3-oN-3PO"/>
-                                            <constraint firstItem="jgj-pR-hga" firstAttribute="leading" secondItem="VFA-2I-7Mw" secondAttribute="leading" id="V7Y-wi-QUY"/>
-                                            <constraint firstAttribute="bottom" secondItem="jgj-pR-hga" secondAttribute="bottom" priority="750" id="ZTv-qp-SU9"/>
-                                            <constraint firstAttribute="bottom" secondItem="jzr-Ec-DzF" secondAttribute="bottom" priority="750" id="oJL-dE-l1c"/>
-                                        </constraints>
-                                    </stackView>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="t3z-wj-7Pt">
-                                        <rect key="frame" x="-2" y="95" width="378" height="31"/>
-                                    </slider>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="157" translatesAutoresizingMaskIntoConstraints="NO" id="Vml-tN-Yfb">
-                                        <rect key="frame" x="0.0" y="140" width="374" height="24"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="в одиночку" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sk-Ek-yvj">
-                                                <rect key="frame" x="0.0" y="0.0" width="102.5" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="в команде" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cv1-cc-B7o">
-                                                <rect key="frame" x="279" y="0.0" width="95" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="VFA-2I-7Mw" secondAttribute="trailing" id="ILb-oH-BUR"/>
-                                    <constraint firstItem="VFA-2I-7Mw" firstAttribute="leading" secondItem="n4W-Yu-5pY" secondAttribute="leading" id="cKy-D4-JWm"/>
-                                    <constraint firstItem="VFA-2I-7Mw" firstAttribute="top" secondItem="n4W-Yu-5pY" secondAttribute="top" priority="750" id="yDc-2q-Hlt"/>
-                                </constraints>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JXz-Ey-dfO">
                                 <rect key="frame" x="121" y="325" width="172" height="192"/>
                                 <subviews>
@@ -281,14 +224,10 @@
                         <constraints>
                             <constraint firstItem="CHI-Nx-ZBG" firstAttribute="top" secondItem="gV5-Wo-vYH" secondAttribute="top" constant="20" id="13t-WJ-Bjd"/>
                             <constraint firstItem="K38-xK-aow" firstAttribute="centerY" secondItem="P6i-h6-uky" secondAttribute="centerY" id="4C7-i2-sdO"/>
-                            <constraint firstItem="n4W-Yu-5pY" firstAttribute="centerY" secondItem="P6i-h6-uky" secondAttribute="centerY" id="CMm-T9-NUP"/>
                             <constraint firstItem="JXz-Ey-dfO" firstAttribute="centerY" secondItem="P6i-h6-uky" secondAttribute="centerY" id="F6I-33-jME"/>
-                            <constraint firstItem="gV5-Wo-vYH" firstAttribute="trailing" secondItem="n4W-Yu-5pY" secondAttribute="trailing" constant="20" id="GoB-VQ-4PD"/>
                             <constraint firstItem="gV5-Wo-vYH" firstAttribute="bottom" secondItem="JHc-Pb-ejV" secondAttribute="bottom" constant="20" id="H9v-Uv-bZr"/>
                             <constraint firstItem="gV5-Wo-vYH" firstAttribute="trailing" secondItem="JHc-Pb-ejV" secondAttribute="trailing" constant="20" id="IBi-3k-crs"/>
                             <constraint firstItem="gV5-Wo-vYH" firstAttribute="trailing" secondItem="CHI-Nx-ZBG" secondAttribute="trailing" constant="20" id="KaI-Le-dyf"/>
-                            <constraint firstItem="n4W-Yu-5pY" firstAttribute="centerX" secondItem="P6i-h6-uky" secondAttribute="centerX" id="NUd-kK-JHp"/>
-                            <constraint firstItem="n4W-Yu-5pY" firstAttribute="leading" secondItem="gV5-Wo-vYH" secondAttribute="leading" constant="20" id="OCy-c5-CxZ"/>
                             <constraint firstItem="JHc-Pb-ejV" firstAttribute="leading" secondItem="gV5-Wo-vYH" secondAttribute="leading" constant="20" id="Or8-bs-Ilg"/>
                             <constraint firstItem="K38-xK-aow" firstAttribute="centerX" secondItem="P6i-h6-uky" secondAttribute="centerX" id="Pre-BV-K4d"/>
                             <constraint firstItem="JXz-Ey-dfO" firstAttribute="centerX" secondItem="P6i-h6-uky" secondAttribute="centerX" id="ZJR-Ae-WHn"/>
@@ -303,15 +242,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="97U-ds-fUc"/>
                     <connections>
-                        <outlet property="QuestionLabel" destination="CHI-Nx-ZBG" id="gjv-4v-wSD"/>
                         <outlet property="progressLine" destination="JHc-Pb-ejV" id="M2P-qj-l33"/>
+                        <outlet property="questionLabel" destination="CHI-Nx-ZBG" id="gjv-4v-wSD"/>
                         <outlet property="stackViewFirstBC" destination="3P8-HJ-amS" id="Qf8-JR-IKO"/>
                         <outlet property="stackViewFirstQuestion" destination="JXz-Ey-dfO" id="NEw-U4-Hui"/>
-                        <outlet property="stackViewImagesThirdQuestion" destination="VFA-2I-7Mw" id="ayD-QE-CCq"/>
-                        <outlet property="stackViewLabelThirdQuestion" destination="Vml-tN-Yfb" id="FYd-tG-VRc"/>
                         <outlet property="stackViewSecondQuestion" destination="K38-xK-aow" id="L9N-sR-Qrw"/>
                         <outlet property="stackViewSecondSV" destination="eTY-vC-BXe" id="tuG-ep-qLF"/>
-                        <outlet property="stackViewThirdQuestion" destination="n4W-Yu-5pY" id="tSq-zU-Sir"/>
                         <outletCollection property="listOfButtonsForFirstQuestion" destination="XCj-G2-pwz" collectionClass="NSMutableArray" id="EJr-j0-UUP"/>
                         <outletCollection property="listOfButtonsForFirstQuestion" destination="eT1-Jy-nwv" collectionClass="NSMutableArray" id="vlV-2w-csc"/>
                         <outletCollection property="listOfButtonsForFirstQuestion" destination="O8n-tp-8EU" collectionClass="NSMutableArray" id="QlG-Ye-JMl"/>
@@ -320,10 +256,6 @@
                         <outletCollection property="listOfImagesForSecondQuestion" destination="96f-S6-bd9" collectionClass="NSMutableArray" id="rkd-4W-ryg"/>
                         <outletCollection property="listOfImagesForSecondQuestion" destination="Mc8-H1-G2W" collectionClass="NSMutableArray" id="Nsl-9T-Fqf"/>
                         <outletCollection property="listOfImagesForSecondQuestion" destination="xcu-f4-5jh" collectionClass="NSMutableArray" id="SPu-Rs-Q2a"/>
-                        <outletCollection property="listOfImagesForThirdQuestion" destination="jgj-pR-hga" collectionClass="NSMutableArray" id="N53-Ig-Gne"/>
-                        <outletCollection property="listOfImagesForThirdQuestion" destination="jzr-Ec-DzF" collectionClass="NSMutableArray" id="GCJ-fp-KwH"/>
-                        <outletCollection property="listOfLabelsForThirdQuestion" destination="1Sk-Ek-yvj" collectionClass="NSMutableArray" id="1ET-S1-brH"/>
-                        <outletCollection property="listOfLabelsForThirdQuestion" destination="cv1-cc-B7o" collectionClass="NSMutableArray" id="HnL-Ss-X4d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgW-rH-AfJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -371,7 +303,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="alone@x1" width="170" height="170"/>
         <image name="batman@x1" width="170" height="170"/>
         <image name="captain-america@x1" width="170" height="170"/>
         <image name="darth-vader@x1" width="170" height="170"/>
@@ -380,7 +311,6 @@
         <image name="michaelangelo@x1" width="170" height="170"/>
         <image name="raphael@x1" width="170" height="170"/>
         <image name="spiderman@x1" width="170" height="170"/>
-        <image name="team@x1" width="170" height="170"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

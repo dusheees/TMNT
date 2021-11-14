@@ -7,64 +7,74 @@
 
 import UIKit
 struct ThirdQuestion {
-    
     // MARK: - UIProperties
-    var listOfImagesForThirdQuestion: [UIImageView]!
-    var listOfLabelsForThirdQuestion: [UILabel]!
+    var view: UIView
+    var questionLabel: UILabel
+    var thirdQuestionView: UIView
+    var imageViewLeftThirdQuestion: UIImageView
+    var imageViewRightThirdQuestion: UIImageView
+    var slider: UISlider
+    var labelLeftThirdQuestion: UILabel
+    var labelRightThirdQuestion: UILabel
     
     // MARK: - Properties
     var size: CGSize
     var factor: CGFloat
     
-    init(listOfImagesForThirdQuestion: [UIImageView], listOfLabelsForThirdQuestion: [UILabel], size: CGSize, factor: CGFloat) {
-        self.listOfImagesForThirdQuestion = listOfImagesForThirdQuestion
-        self.listOfLabelsForThirdQuestion = listOfLabelsForThirdQuestion
+    init(view: UIView, questionLabel: UILabel, thirdQuestionView: UIView, imageViewLeftThirdQuestion: UIImageView, imageViewRightThirdQuestion: UIImageView, slider: UISlider, labelLeftThirdQuestion: UILabel, labelRightThirdQuestion: UILabel, size: CGSize, factor: CGFloat) {
+        self.view = view
+        self.questionLabel = questionLabel
+        self.thirdQuestionView = thirdQuestionView
+        self.imageViewLeftThirdQuestion = imageViewLeftThirdQuestion
+        self.imageViewRightThirdQuestion = imageViewRightThirdQuestion
+        self.slider = slider
+        self.labelLeftThirdQuestion = labelLeftThirdQuestion
+        self.labelRightThirdQuestion = labelRightThirdQuestion
         self.size = size
         self.factor = factor
     }
     
     // MARK: - Methods
-    mutating func correctSizesImageView() -> [UIImageView] {
-        for `image` in listOfImagesForThirdQuestion {
-            `image`.transform = CGAffineTransform(scaleX: factor / 500, y: factor / 500)
-        }
-        return listOfImagesForThirdQuestion
+    func addConstraints() {
+        let sizes = UIScreen.main.bounds
+        NSLayoutConstraint.activate([
+            // thirdQuestionView
+            thirdQuestionView.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
+            thirdQuestionView.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            thirdQuestionView.safeAreaLayoutGuide.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: sizes.width * 0.0625),
+            thirdQuestionView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            
+            // imageViewLeftThirdQuestion
+            imageViewLeftThirdQuestion.leadingAnchor.constraint(equalTo: thirdQuestionView.safeAreaLayoutGuide.leadingAnchor, constant: sizes.width * 0.0625),
+            imageViewLeftThirdQuestion.bottomAnchor.constraint(equalTo: slider.topAnchor, constant: -sizes.width * 0.0625),
+            // size
+            imageViewLeftThirdQuestion.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.15),
+            imageViewLeftThirdQuestion.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.15),
+            
+            // imageViewRightThirdQuestion
+            imageViewRightThirdQuestion.trailingAnchor.constraint(equalTo: thirdQuestionView.safeAreaLayoutGuide.trailingAnchor, constant: -sizes.width * 0.0625),
+            imageViewRightThirdQuestion.bottomAnchor.constraint(equalTo: slider.topAnchor, constant: -sizes.width * 0.0625),
+            // size
+            imageViewRightThirdQuestion.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.15),
+            imageViewRightThirdQuestion.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.15),
+            
+            // slider
+            slider.leadingAnchor.constraint(equalTo: thirdQuestionView.safeAreaLayoutGuide.leadingAnchor, constant: sizes.width * 0.0625),
+            slider.trailingAnchor.constraint(equalTo: thirdQuestionView.safeAreaLayoutGuide.trailingAnchor, constant:  -sizes.width * 0.0625),
+            slider.centerYAnchor.constraint(equalTo: thirdQuestionView.safeAreaLayoutGuide.centerYAnchor),
+            
+            // labelLeftThirdQuestion
+            labelLeftThirdQuestion.leadingAnchor.constraint(equalTo: thirdQuestionView.safeAreaLayoutGuide.leadingAnchor, constant: sizes.width * 0.0625),
+            labelLeftThirdQuestion.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: sizes.width * 0.0625),
+            
+            // labelFirst
+            labelRightThirdQuestion.trailingAnchor.constraint(equalTo: thirdQuestionView.safeAreaLayoutGuide.trailingAnchor, constant: -sizes.width * 0.0625),
+            labelRightThirdQuestion.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: sizes.width * 0.0625),
+        ])
     }
-    
-    mutating func correctSizesLabels() -> [UILabel] {
-        for `label` in listOfLabelsForThirdQuestion {
-            `label`.font = UIFont.systemFont(ofSize: factor / 20)
-        }
-        return listOfLabelsForThirdQuestion
+
+    mutating func correctSize() {
+        labelLeftThirdQuestion.font = UIFont.systemFont(ofSize: factor / 30)
+        labelRightThirdQuestion.font = UIFont.systemFont(ofSize: factor / 30)
     }
-    
-//    mutating func correctSpacing() -> CGFloat {
-//        var spacing: CGFloat
-//        spacing = valueForSpacing()
-//        return spacing
-//    }
-//    
-//    func valueForSpacing() -> CGFloat {
-//        let value: CGFloat
-//        let sizeValue: Double
-//
-//        if size.width < size.height {
-//            sizeValue = size.width
-//        } else {
-//            sizeValue = size.height
-//        }
-//
-//        switch sizeValue {
-//        case 428.0... :
-//            value = size.width / 2 * factor / 600
-//            print(true)
-//        case 321.0 ... 428.0:
-//            value = 10 + factor / 600
-//            print(false)
-//        default:
-//            value = factor / 600
-//        }
-//        return value
-//    }
-    
 }
