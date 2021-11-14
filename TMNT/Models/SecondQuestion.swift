@@ -10,6 +10,7 @@ struct SecondQuestion {
     // MARK: - UIProperties
     var view: UIView
     var questionLabel: UILabel
+    var progressLine: UIProgressView
     var secondQuestionView: UIView
     var imageViewLeftTopSecondQuestion: UIImageView
     var imageViewRightTopSecondQuestion: UIImageView
@@ -19,9 +20,10 @@ struct SecondQuestion {
     // MARK: - Properties
     var gesture: Int!
     
-    init(view: UIView, questionLabel: UILabel, secondQuestionView: UIView, imageViewLeftTopSecondQuestion: UIImageView, imageViewRightTopSecondQuestion: UIImageView, imageViewLeftBottomSecondQuestion: UIImageView, imageViewRightBottomSecondQuestion: UIImageView) {
+    init(view: UIView, questionLabel: UILabel, progressLine: UIProgressView, secondQuestionView: UIView, imageViewLeftTopSecondQuestion: UIImageView, imageViewRightTopSecondQuestion: UIImageView, imageViewLeftBottomSecondQuestion: UIImageView, imageViewRightBottomSecondQuestion: UIImageView) {
         self.view = view
         self.questionLabel = questionLabel
+        self.progressLine = progressLine
         self.secondQuestionView = secondQuestionView
         self.imageViewLeftTopSecondQuestion = imageViewLeftTopSecondQuestion
         self.imageViewRightTopSecondQuestion = imageViewRightTopSecondQuestion
@@ -37,7 +39,7 @@ struct SecondQuestion {
             secondQuestionView.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             secondQuestionView.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
             secondQuestionView.safeAreaLayoutGuide.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 0),
-            secondQuestionView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            secondQuestionView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: progressLine.topAnchor, constant: 0),
             
             // imageViewLeftTopSecondQuestion
             imageViewLeftTopSecondQuestion.centerYAnchor.constraint(equalTo: secondQuestionView.centerYAnchor, constant: -size.width * 0.15),

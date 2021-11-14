@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		555D52FE2741A5DE001ECB67 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D52FD2741A5DE001ECB67 /* General.swift */; };
 		555FAB29273FE895001CD08D /* FirstQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555FAB28273FE895001CD08D /* FirstQuestion.swift */; };
 		555FAB2B273FF4A2001CD08D /* SecondQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555FAB2A273FF4A2001CD08D /* SecondQuestion.swift */; };
 		555FAB2D273FF6F1001CD08D /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555FAB2C273FF6F1001CD08D /* WelcomeScreen.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		555D52FD2741A5DE001ECB67 /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
 		555FAB28273FE895001CD08D /* FirstQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstQuestion.swift; sourceTree = "<group>"; };
 		555FAB2A273FF4A2001CD08D /* SecondQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondQuestion.swift; sourceTree = "<group>"; };
 		555FAB2C273FF6F1001CD08D /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				555FAB2C273FF6F1001CD08D /* WelcomeScreen.swift */,
+				555D52FD2741A5DE001ECB67 /* General.swift */,
 				555FAB28273FE895001CD08D /* FirstQuestion.swift */,
 				555FAB2A273FF4A2001CD08D /* SecondQuestion.swift */,
 				55BD217D274037B7001A26A7 /* ThirdQuestion.swift */,
@@ -188,6 +191,7 @@
 				55CD3263273E717700F01A92 /* WelcomeViewController.swift in Sources */,
 				55BD217E274037B7001A26A7 /* ThirdQuestion.swift in Sources */,
 				55CD325F273E717700F01A92 /* AppDelegate.swift in Sources */,
+				555D52FE2741A5DE001ECB67 /* General.swift in Sources */,
 				55DC9E51273EE14600C9B92A /* QuestionsViewController.swift in Sources */,
 				555FAB29273FE895001CD08D /* FirstQuestion.swift in Sources */,
 				555FAB2D273FF6F1001CD08D /* WelcomeScreen.swift in Sources */,

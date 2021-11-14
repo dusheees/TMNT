@@ -12,6 +12,7 @@ struct FirstQuestion {
     // MARK: - UIProperties
     var view: UIView
     var questionLabel: UILabel
+    var progressLine: UIProgressView
     var firstQuestionView: UIView
     var purpleButtonFirstQuestion: UIButton
     var blueButtonFirstQuestion: UIButton
@@ -22,10 +23,11 @@ struct FirstQuestion {
     var factor: CGFloat
     var sender: Int!
     
-    init(factor: CGFloat, view: UIView, questionLabel: UILabel, firstQuestionView: UIView, purpleButtonFirstQuestion: UIButton, blueButtonFirstQuestion: UIButton, orangeButtonFirstQuestion: UIButton, redButtonFirstQuestion: UIButton) {
+    init(factor: CGFloat, view: UIView, questionLabel: UILabel, progressLine: UIProgressView, firstQuestionView: UIView, purpleButtonFirstQuestion: UIButton, blueButtonFirstQuestion: UIButton, orangeButtonFirstQuestion: UIButton, redButtonFirstQuestion: UIButton) {
         self.factor = factor
         self.view = view
         self.questionLabel = questionLabel
+        self.progressLine = progressLine
         self.firstQuestionView = firstQuestionView
         self.purpleButtonFirstQuestion = purpleButtonFirstQuestion
         self.blueButtonFirstQuestion = blueButtonFirstQuestion
@@ -41,7 +43,7 @@ struct FirstQuestion {
             firstQuestionView.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             firstQuestionView.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
             firstQuestionView.safeAreaLayoutGuide.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 0),
-            firstQuestionView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            firstQuestionView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: progressLine.topAnchor, constant: 0),
             
             // purpleButtonFirstQuestion
             purpleButtonFirstQuestion.centerXAnchor.constraint(equalTo: firstQuestionView.safeAreaLayoutGuide.centerXAnchor),

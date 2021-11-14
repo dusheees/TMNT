@@ -10,6 +10,7 @@ struct ThirdQuestion {
     // MARK: - UIProperties
     var view: UIView
     var questionLabel: UILabel
+    var progressLine: UIProgressView
     var thirdQuestionView: UIView
     var imageViewLeftThirdQuestion: UIImageView
     var imageViewRightThirdQuestion: UIImageView
@@ -20,9 +21,10 @@ struct ThirdQuestion {
     // MARK: - Properties
     var factor: CGFloat
     
-    init(view: UIView, questionLabel: UILabel, thirdQuestionView: UIView, imageViewLeftThirdQuestion: UIImageView, imageViewRightThirdQuestion: UIImageView, slider: UISlider, labelLeftThirdQuestion: UILabel, labelRightThirdQuestion: UILabel, factor: CGFloat) {
+    init(view: UIView, questionLabel: UILabel, progressLine: UIProgressView, thirdQuestionView: UIView, imageViewLeftThirdQuestion: UIImageView, imageViewRightThirdQuestion: UIImageView, slider: UISlider, labelLeftThirdQuestion: UILabel, labelRightThirdQuestion: UILabel, factor: CGFloat) {
         self.view = view
         self.questionLabel = questionLabel
+        self.progressLine = progressLine
         self.thirdQuestionView = thirdQuestionView
         self.imageViewLeftThirdQuestion = imageViewLeftThirdQuestion
         self.imageViewRightThirdQuestion = imageViewRightThirdQuestion
@@ -40,7 +42,7 @@ struct ThirdQuestion {
             thirdQuestionView.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             thirdQuestionView.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
             thirdQuestionView.safeAreaLayoutGuide.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 0),
-            thirdQuestionView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            thirdQuestionView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: progressLine.topAnchor, constant: 0),
             
             // imageViewLeftThirdQuestion
             imageViewLeftThirdQuestion.leadingAnchor.constraint(equalTo: thirdQuestionView.safeAreaLayoutGuide.leadingAnchor, constant: size.width * 0.0625),
