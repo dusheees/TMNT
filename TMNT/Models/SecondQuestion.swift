@@ -7,89 +7,61 @@
 
 import UIKit
 struct SecondQuestion {
-    
     // MARK: - UIProperties
-    var listOfImagesForSecondQuestion: [UIImageView]!
+    var view: UIView
+    var questionLabel: UILabel
+    var secondQuestionView: UIView
+    var imageViewLeftTopSecondQuestion: UIImageView
+    var imageViewRightTopSecondQuestion: UIImageView
+    var imageViewLeftBottomSecondQuestion: UIImageView
+    var imageViewRightBottomSecondQuestion: UIImageView
     
-    // MARK: - Properties
-    var size: CGSize
-    var factor: CGFloat
-    var imageTag: Int!
-    
-    init(listOfImagesForSecondQuestion: [UIImageView], size: CGSize, factor: CGFloat) {
-        self.listOfImagesForSecondQuestion = listOfImagesForSecondQuestion
-        self.size = size
-        self.factor = factor
+    init(view: UIView, questionLabel: UILabel, secondQuestionView: UIView, imageViewLeftTopSecondQuestion: UIImageView, imageViewRightTopSecondQuestion: UIImageView, imageViewLeftBottomSecondQuestion: UIImageView, imageViewRightBottomSecondQuestion: UIImageView) {
+        self.view = view
+        self.questionLabel = questionLabel
+        self.secondQuestionView = secondQuestionView
+        self.imageViewLeftTopSecondQuestion = imageViewLeftTopSecondQuestion
+        self.imageViewRightTopSecondQuestion = imageViewRightTopSecondQuestion
+        self.imageViewLeftBottomSecondQuestion = imageViewLeftBottomSecondQuestion
+        self.imageViewRightBottomSecondQuestion = imageViewRightBottomSecondQuestion
     }
     
-    // MARK: - Methods
-    // correct view
-    mutating func correctSizes() -> [UIImageView] {
-        for `image` in listOfImagesForSecondQuestion {
-            `image`.transform = CGAffineTransform(scaleX: valueForCorrectImageSize(), y: valueForCorrectImageSize())
-        }
-        return listOfImagesForSecondQuestion
+    func addConstraints() {
+        let size = UIScreen.main.bounds
+        NSLayoutConstraint.activate([
+            // secondQuestionView
+            secondQuestionView.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
+            secondQuestionView.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            secondQuestionView.safeAreaLayoutGuide.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 0),
+            secondQuestionView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            
+            // imageViewLeftTopSecondQuestion
+            imageViewLeftTopSecondQuestion.centerYAnchor.constraint(equalTo: secondQuestionView.centerYAnchor, constant: -size.width * 0.15),
+            imageViewLeftTopSecondQuestion.centerXAnchor.constraint(equalTo: secondQuestionView.centerXAnchor, constant: -size.width * 0.15),
+            // size
+            imageViewLeftTopSecondQuestion.heightAnchor.constraint(equalToConstant: size.width * 0.25),
+            imageViewLeftTopSecondQuestion.widthAnchor.constraint(equalToConstant: size.width * 0.25),
+            
+            // imageViewRightTopSecondQuestion
+            imageViewRightTopSecondQuestion.centerYAnchor.constraint(equalTo: secondQuestionView.centerYAnchor, constant: -size.width * 0.15),
+            imageViewRightTopSecondQuestion.centerXAnchor.constraint(equalTo: secondQuestionView.centerXAnchor, constant: size.width * 0.15),
+            // size
+            imageViewRightTopSecondQuestion.heightAnchor.constraint(equalToConstant: size.width * 0.25),
+            imageViewRightTopSecondQuestion.widthAnchor.constraint(equalToConstant: size.width * 0.25),
+            
+            // imageViewLeftBottomSecondQuestion
+            imageViewLeftBottomSecondQuestion.centerYAnchor.constraint(equalTo: secondQuestionView.centerYAnchor, constant: size.width * 0.15),
+            imageViewLeftBottomSecondQuestion.centerXAnchor.constraint(equalTo: secondQuestionView.centerXAnchor, constant: -size.width * 0.15),
+            // size
+            imageViewLeftBottomSecondQuestion.heightAnchor.constraint(equalToConstant: size.width * 0.25),
+            imageViewLeftBottomSecondQuestion.widthAnchor.constraint(equalToConstant: size.width * 0.25),
+            
+            // imageViewRightBottomSecondQuestion
+            imageViewRightBottomSecondQuestion.centerYAnchor.constraint(equalTo: secondQuestionView.centerYAnchor, constant: size.width * 0.15),            imageViewRightBottomSecondQuestion.centerXAnchor.constraint(equalTo: secondQuestionView.centerXAnchor, constant: size.width * 0.15),
+            // size
+            imageViewRightBottomSecondQuestion.heightAnchor.constraint(equalToConstant: size.width * 0.25),
+            imageViewRightBottomSecondQuestion.widthAnchor.constraint(equalToConstant: size.width * 0.25),
+        ])
     }
-    
-    func valueForCorrectImageSize() -> CGFloat {
-        let value: CGFloat
-        let sizeValue: Double
 
-        if size.width < size.height {
-            sizeValue = size.width
-        } else {
-            sizeValue = size.height
-        }
-
-        switch sizeValue {
-        case 1024:
-            value = factor / 700
-        default:
-            value = factor / 500
-        }
-        return value
-    }
-    
-    mutating func correctSpacing() -> CGFloat {
-        var spacing: CGFloat
-        spacing = valueForSpacing()
-        return spacing
-    }
-    
-    func valueForSpacing() -> CGFloat {
-        let value: CGFloat
-        let sizeValue: Double
-
-        if size.width < size.height {
-            sizeValue = size.width
-        } else {
-            sizeValue = size.height
-        }
-
-        switch sizeValue {
-        case 428.0... :
-            value = 150 + factor / 600
-        case 321.0 ... 428.0:
-            value = 40 + factor / 600
-        default:
-            value = factor / 600
-        }
-        return value
-    }
-    
-    // operations
-    func tap() {
-        switch imageTag {
-        case 0:
-            print("batman")
-        case 1:
-            print("captain-america")
-        case 2:
-            print("spider-man")
-        case 3:
-            print("darth-vader")
-        default:
-            print("fatal error")
-        }
-    }
 }

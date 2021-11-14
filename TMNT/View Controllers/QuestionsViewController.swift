@@ -18,16 +18,45 @@ class QuestionsViewController: UIViewController {
     @IBOutlet weak var stackViewFirstQuestion: UIStackView!
     @IBOutlet var listOfButtonsForFirstQuestion: [UIButton]!
     // second question
-    @IBOutlet weak var stackViewSecondQuestion: UIStackView!
-    @IBOutlet weak var stackViewFirstBC: UIStackView!
-    @IBOutlet weak var stackViewSecondSV: UIStackView!
-    @IBOutlet var listOfImagesForSecondQuestion: [UIImageView]! {
-        didSet {
-            for `image` in listOfImagesForSecondQuestion {
-                `image`.isUserInteractionEnabled = true
-            }
-        }
-    }
+    var secondQuestionView: UIView = {
+        var secondQuestionView = UIView()
+        secondQuestionView.translatesAutoresizingMaskIntoConstraints = false
+        secondQuestionView.backgroundColor = .white
+        return secondQuestionView
+    }()
+    var imageViewLeftTopSecondQuestion: UIImageView = {
+        var imageViewLeftTop = UIImageView()
+        imageViewLeftTop.translatesAutoresizingMaskIntoConstraints = false
+        imageViewLeftTop.image = UIImage(named: "batman@x1")
+        imageViewLeftTop.tag = 0
+        imageViewLeftTop.isUserInteractionEnabled = true
+        return imageViewLeftTop
+    }()
+    var imageViewRightTopSecondQuestion: UIImageView = {
+        var imageViewRightTop = UIImageView()
+        imageViewRightTop.translatesAutoresizingMaskIntoConstraints = false
+        imageViewRightTop.image = UIImage(named: "captain-america@x1")
+        imageViewRightTop.isUserInteractionEnabled = true
+        imageViewRightTop.tag = 1
+        return imageViewRightTop
+    }()
+    var imageViewLeftBottomSecondQuestion: UIImageView = {
+        var imageViewLeftBottom = UIImageView()
+        imageViewLeftBottom.translatesAutoresizingMaskIntoConstraints = false
+        imageViewLeftBottom.image = UIImage(named: "spiderman@x1")
+        imageViewLeftBottom.isUserInteractionEnabled = true
+        imageViewLeftBottom.tag = 2
+        return imageViewLeftBottom
+    }()
+    var imageViewRightBottomSecondQuestion: UIImageView = {
+        var imageViewRightBottom = UIImageView()
+        imageViewRightBottom.translatesAutoresizingMaskIntoConstraints = false
+        imageViewRightBottom.image = UIImage(named: "darth-vader@x1")
+        imageViewRightBottom.isUserInteractionEnabled = true
+        imageViewRightBottom.tag = 3
+        return imageViewRightBottom
+    }()
+    var listOfImagesSecondQuestion = [UIImageView]()
     // third question
     var thirdQuestionView: UIView = {
         var thirdQuestionView = UIView()
@@ -80,7 +109,26 @@ class QuestionsViewController: UIViewController {
         // first question
         firstQuestion = FirstQuestion(listOfButtonsForFirstQuestion: listOfButtonsForFirstQuestion, factor: factor)
         // second question
-        secondQuestion = SecondQuestion(listOfImagesForSecondQuestion: listOfImagesForSecondQuestion, size: size, factor: factor)
+        view.addSubview(secondQuestionView)
+        secondQuestionView.addSubview(imageViewLeftTopSecondQuestion)
+        secondQuestionView.addSubview(imageViewRightTopSecondQuestion)
+        secondQuestionView.addSubview(imageViewLeftBottomSecondQuestion)
+        secondQuestionView.addSubview(imageViewRightBottomSecondQuestion)
+        listOfImagesSecondQuestion = [imageViewLeftTopSecondQuestion, imageViewRightTopSecondQuestion, imageViewLeftBottomSecondQuestion, imageViewRightBottomSecondQuestion]
+        
+        let gestureRecognizerLeftTop = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
+        let gestureRecognizerRightTop = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
+        let gestureRecognizerLeftBottom = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
+        let gestureRecognizerRightBottom = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
+        
+        imageViewLeftTopSecondQuestion.addGestureRecognizer(gestureRecognizerLeftTop)
+        imageViewRightTopSecondQuestion.addGestureRecognizer(gestureRecognizerRightTop)
+        imageViewLeftBottomSecondQuestion.addGestureRecognizer(gestureRecognizerLeftBottom)
+        imageViewRightBottomSecondQuestion.addGestureRecognizer(gestureRecognizerRightBottom)
+        
+        secondQuestion = SecondQuestion(view: view, questionLabel: questionLabel, secondQuestionView: secondQuestionView, imageViewLeftTopSecondQuestion: imageViewLeftTopSecondQuestion, imageViewRightTopSecondQuestion: imageViewRightTopSecondQuestion, imageViewLeftBottomSecondQuestion:  imageViewLeftBottomSecondQuestion, imageViewRightBottomSecondQuestion: imageViewRightBottomSecondQuestion)
+        secondQuestion.addConstraints()
+//        secondQuestionView.isHidden = true
         // third question
         view.addSubview(thirdQuestionView)
         thirdQuestionView.addSubview(imageViewLeftThirdQuestion)
@@ -88,9 +136,11 @@ class QuestionsViewController: UIViewController {
         thirdQuestionView.addSubview(slider)
         thirdQuestionView.addSubview(labelLeftThirdQuestion)
         thirdQuestionView.addSubview(labelRightThirdQuestion)
-        thirdQuestion = ThirdQuestion(view: view, questionLabel: questionLabel, thirdQuestionView: thirdQuestionView, imageViewLeftThirdQuestion: imageViewLeftThirdQuestion, imageViewRightThirdQuestion: imageViewRightThirdQuestion, slider: slider, labelLeftThirdQuestion: labelLeftThirdQuestion, labelRightThirdQuestion: labelRightThirdQuestion, size: size, factor: factor)
+        thirdQuestion = ThirdQuestion(view: view, questionLabel: questionLabel, thirdQuestionView: thirdQuestionView, imageViewLeftThirdQuestion: imageViewLeftThirdQuestion, imageViewRightThirdQuestion: imageViewRightThirdQuestion, slider: slider, labelLeftThirdQuestion: labelLeftThirdQuestion, labelRightThirdQuestion: labelRightThirdQuestion, factor: factor)
         thirdQuestion.addConstraints()
         thirdQuestion.correctSize()
+        thirdQuestionView.isHidden = true
+        
         correctSize()
     }
     
@@ -103,18 +153,15 @@ class QuestionsViewController: UIViewController {
         listOfButtonsForFirstQuestion = firstQuestion.correctSizes()
         
         // second question settings
-        stackViewSecondQuestion.spacing = secondQuestion.correctSpacing()
-        stackViewFirstBC.spacing = secondQuestion.correctSpacing()
-        stackViewSecondSV.spacing = secondQuestion.correctSpacing()
-        listOfImagesForSecondQuestion = secondQuestion.correctSizes()
+
         
     }
     
-    // MARK: - Actions
-    @IBAction func tap(_ sender: UITapGestureRecognizer) {
-        secondQuestion.imageTag = sender.view?.tag
-        secondQuestion.tap()
+    @objc func tap(_ gesture: UITapGestureRecognizer) {
+        print("tap")
     }
-    
+
+    // MARK: - Actions
+
 }
 

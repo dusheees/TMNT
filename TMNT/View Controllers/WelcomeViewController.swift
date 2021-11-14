@@ -33,6 +33,8 @@ class WelcomeViewController: UIViewController {
         size = view.bounds.size
         factor = min(size.width, size.height)
         
+        print(size)
+        
         welcomeScreen = WelcomeScreen(listOfImages: listOfImages, welcomeLabel: welcomeLabel, welcomeButton: welcomeButton, listOfConstrains: listOfConstrains, size: size, factor: factor)
         
         correctSize()
