@@ -13,7 +13,11 @@ struct General {
     var questionLabel: UILabel
     var progressLine: UIProgressView
     
-    init(view: UIView, questionLabel: UILabel, progressLine: UIProgressView) {
+    // MARK: - Properties
+    var factor: CGFloat
+    
+    init(factor: CGFloat, view: UIView, questionLabel: UILabel, progressLine: UIProgressView) {
+        self.factor = factor
         self.view = view
         self.questionLabel = questionLabel
         self.progressLine = progressLine
@@ -32,6 +36,10 @@ struct General {
             progressLine.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -size.width * 0.0625),
             progressLine.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -size.width * 0.0625),
         ])
+    }
+    
+    mutating func correctSizze() {
+        questionLabel.font = UIFont.systemFont(ofSize: factor / 16)
     }
     
 }

@@ -15,7 +15,7 @@ class QuestionsViewController: UIViewController {
     var questionLabel: UILabel = {
         var questionLabel = UILabel()
         questionLabel.translatesAutoresizingMaskIntoConstraints = false
-        questionLabel.text = "Вопрос"
+        questionLabel.text = "Тут должен быть вопрос"
         questionLabel.textAlignment = .center
         questionLabel.numberOfLines = 2
         return questionLabel
@@ -165,8 +165,9 @@ class QuestionsViewController: UIViewController {
         // GENERAL
         view.addSubview(questionLabel)
         view.addSubview(progressLine)
-        general = General(view: view, questionLabel: questionLabel, progressLine: progressLine)
+        general = General(factor: factor, view: view, questionLabel: questionLabel, progressLine: progressLine)
         general.addConstraints()
+        general.correctSizze()
         
         // FIRST QUESTION
         view.addSubview(firstQuestionView)
@@ -221,14 +222,6 @@ class QuestionsViewController: UIViewController {
         thirdQuestion.addConstraints()
         thirdQuestion.correctSize()
         thirdQuestionView.isHidden = true
-        
-        correctSize()
-    }
-    
-    private func correctSize() {
-        // general settings
-        // set up QuestionLabel
-        questionLabel.font = UIFont.systemFont(ofSize: factor / 16)
     }
 
     // MARK: - Operations
