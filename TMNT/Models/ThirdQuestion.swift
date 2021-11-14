@@ -17,11 +17,13 @@ struct ThirdQuestion {
     var slider: UISlider
     var labelLeftThirdQuestion: UILabel
     var labelRightThirdQuestion: UILabel
+    var buttonThirdQuestion: UIButton
     
     // MARK: - Properties
     var factor: CGFloat
     
-    init(view: UIView, questionLabel: UILabel, progressLine: UIProgressView, thirdQuestionView: UIView, imageViewLeftThirdQuestion: UIImageView, imageViewRightThirdQuestion: UIImageView, slider: UISlider, labelLeftThirdQuestion: UILabel, labelRightThirdQuestion: UILabel, factor: CGFloat) {
+    init(factor: CGFloat, view: UIView, questionLabel: UILabel, progressLine: UIProgressView, thirdQuestionView: UIView, imageViewLeftThirdQuestion: UIImageView, imageViewRightThirdQuestion: UIImageView, slider: UISlider, labelLeftThirdQuestion: UILabel, labelRightThirdQuestion: UILabel, buttonThirdQuestion: UIButton) {
+        self.factor = factor
         self.view = view
         self.questionLabel = questionLabel
         self.progressLine = progressLine
@@ -31,7 +33,7 @@ struct ThirdQuestion {
         self.slider = slider
         self.labelLeftThirdQuestion = labelLeftThirdQuestion
         self.labelRightThirdQuestion = labelRightThirdQuestion
-        self.factor = factor
+        self.buttonThirdQuestion = buttonThirdQuestion
     }
     
     // MARK: - Methods
@@ -67,15 +69,28 @@ struct ThirdQuestion {
             labelLeftThirdQuestion.leadingAnchor.constraint(equalTo: thirdQuestionView.safeAreaLayoutGuide.leadingAnchor, constant: size.width * 0.0625),
             labelLeftThirdQuestion.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: size.width * 0.0625),
             
-            // labelFirst
+            // labelRightThirdQuestion
             labelRightThirdQuestion.trailingAnchor.constraint(equalTo: thirdQuestionView.safeAreaLayoutGuide.trailingAnchor, constant: -size.width * 0.0625),
             labelRightThirdQuestion.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: size.width * 0.0625),
+            
+            // buttonThirdQuestion
+            buttonThirdQuestion.centerXAnchor.constraint(equalTo: thirdQuestionView.safeAreaLayoutGuide.centerXAnchor),
+            buttonThirdQuestion.topAnchor.constraint(equalTo: labelLeftThirdQuestion.bottomAnchor, constant: size.width * 0.0625)
         ])
     }
 
     mutating func correctSize() {
+        // labels
         labelLeftThirdQuestion.font = UIFont.systemFont(ofSize: factor / 30)
         labelRightThirdQuestion.font = UIFont.systemFont(ofSize: factor / 30)
+        
+        // buttonThirdQuestion
+        buttonThirdQuestion.titleLabel?.font = UIFont.systemFont(ofSize: factor / 16)
+    }
+    
+    // MARK: - Operations
+    func buttonPressed() {
+        print("Ответ записан")
     }
     
 }

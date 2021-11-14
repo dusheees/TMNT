@@ -113,27 +113,11 @@
                     <view key="view" contentMode="scaleToFill" id="P6i-h6-uky">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="С кем бы ты поработал?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="CHI-Nx-ZBG">
-                                <rect key="frame" x="20" y="76" width="374" height="33.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="gV5-Wo-vYH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="CHI-Nx-ZBG" firstAttribute="top" secondItem="gV5-Wo-vYH" secondAttribute="top" constant="20" id="13t-WJ-Bjd"/>
-                            <constraint firstItem="gV5-Wo-vYH" firstAttribute="trailing" secondItem="CHI-Nx-ZBG" secondAttribute="trailing" constant="20" id="KaI-Le-dyf"/>
-                            <constraint firstItem="CHI-Nx-ZBG" firstAttribute="leading" secondItem="gV5-Wo-vYH" secondAttribute="leading" constant="20" id="e6F-xP-BdR"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="97U-ds-fUc"/>
-                    <connections>
-                        <outlet property="questionLabel" destination="CHI-Nx-ZBG" id="gjv-4v-wSD"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgW-rH-AfJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

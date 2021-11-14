@@ -12,7 +12,14 @@ class QuestionsViewController: UIViewController {
 
     // MARK: - UIProperties
     // MARK: - General
-    @IBOutlet weak var questionLabel: UILabel!
+    var questionLabel: UILabel = {
+        var questionLabel = UILabel()
+        questionLabel.translatesAutoresizingMaskIntoConstraints = false
+        questionLabel.text = "Вопрос"
+        questionLabel.textAlignment = .center
+        questionLabel.numberOfLines = 2
+        return questionLabel
+    }()
     var progressLine: UIProgressView = {
         var progressLine = UIProgressView()
         progressLine.translatesAutoresizingMaskIntoConstraints = false
@@ -135,6 +142,13 @@ class QuestionsViewController: UIViewController {
         label.text = "в команде"
         return label
     }()
+    var buttonThirdQuestion: UIButton = {
+        var buttonThirdQuestion = UIButton()
+        buttonThirdQuestion.translatesAutoresizingMaskIntoConstraints = false
+        buttonThirdQuestion.setTitle("Ответить", for: .normal)
+        buttonThirdQuestion.setTitleColor(.systemBlue, for: .normal)
+        return buttonThirdQuestion
+    }()
     
     // MARK: - Properties
     var size: CGSize!
@@ -149,8 +163,9 @@ class QuestionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // GENERAL
+        view.addSubview(questionLabel)
         view.addSubview(progressLine)
-        general = General(view: view, progressLine: progressLine)
+        general = General(view: view, questionLabel: questionLabel, progressLine: progressLine)
         general.addConstraints()
         
         // FIRST QUESTION
@@ -160,15 +175,15 @@ class QuestionsViewController: UIViewController {
         firstQuestionView.addSubview(orangeButtonFirstQuestion)
         firstQuestionView.addSubview(redButtonFirstQuestion)
         
-        purpleButtonFirstQuestion.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
-        blueButtonFirstQuestion.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
-        orangeButtonFirstQuestion.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
-        redButtonFirstQuestion.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+        purpleButtonFirstQuestion.addTarget(self, action: #selector(buttonPressedFirstQuestion(_:)), for: .touchUpInside)
+        blueButtonFirstQuestion.addTarget(self, action: #selector(buttonPressedFirstQuestion(_:)), for: .touchUpInside)
+        orangeButtonFirstQuestion.addTarget(self, action: #selector(buttonPressedFirstQuestion(_:)), for: .touchUpInside)
+        redButtonFirstQuestion.addTarget(self, action: #selector(buttonPressedFirstQuestion(_:)), for: .touchUpInside)
         
         firstQuestion = FirstQuestion(factor: factor, view: view, questionLabel: questionLabel, progressLine: progressLine, firstQuestionView: firstQuestionView, purpleButtonFirstQuestion: purpleButtonFirstQuestion, blueButtonFirstQuestion: blueButtonFirstQuestion, orangeButtonFirstQuestion: orangeButtonFirstQuestion, redButtonFirstQuestion: redButtonFirstQuestion)
         firstQuestion.addConstraints()
         firstQuestion.correctSize()
-        firstQuestionView.isHidden = true
+//        firstQuestionView.isHidden = true
         
         // SECOND QUESTION
         view.addSubview(secondQuestionView)
@@ -198,8 +213,11 @@ class QuestionsViewController: UIViewController {
         thirdQuestionView.addSubview(slider)
         thirdQuestionView.addSubview(labelLeftThirdQuestion)
         thirdQuestionView.addSubview(labelRightThirdQuestion)
+        thirdQuestionView.addSubview(buttonThirdQuestion)
         
-        thirdQuestion = ThirdQuestion(view: view, questionLabel: questionLabel, progressLine: progressLine, thirdQuestionView: thirdQuestionView, imageViewLeftThirdQuestion: imageViewLeftThirdQuestion, imageViewRightThirdQuestion: imageViewRightThirdQuestion, slider: slider, labelLeftThirdQuestion: labelLeftThirdQuestion, labelRightThirdQuestion: labelRightThirdQuestion, factor: factor)
+        buttonThirdQuestion.addTarget(self, action: #selector(buttonPressedThirdQuestion(_:)), for: .touchUpInside)
+        
+        thirdQuestion = ThirdQuestion(factor: factor, view: view, questionLabel: questionLabel, progressLine: progressLine, thirdQuestionView: thirdQuestionView, imageViewLeftThirdQuestion: imageViewLeftThirdQuestion, imageViewRightThirdQuestion: imageViewRightThirdQuestion, slider: slider, labelLeftThirdQuestion: labelLeftThirdQuestion, labelRightThirdQuestion: labelRightThirdQuestion, buttonThirdQuestion: buttonThirdQuestion)
         thirdQuestion.addConstraints()
         thirdQuestion.correctSize()
         thirdQuestionView.isHidden = true
@@ -215,15 +233,25 @@ class QuestionsViewController: UIViewController {
 
     // MARK: - Operations
     // FIRST QUESTION
-    @objc func buttonPressed(_ sender: UIButton) {
+    @objc func buttonPressedFirstQuestion(_ sender: UIButton) {
         firstQuestion.sender = sender.tag
         firstQuestion.buttonPressed()
+        firstQuestionView.isHidden = true
+        secondQuestionView.isHidden = false
     }
     
     // SECOND QUESTION
     @objc func tap(_ gesture: UITapGestureRecognizer) {
         secondQuestion.gesture = gesture.view?.tag
         secondQuestion.tap()
+        secondQuestionView.isHidden = true
+        thirdQuestionView.isHidden = false
+    }
+    
+    // THIRD QUESTION
+    @objc func buttonPressedThirdQuestion(_ sender: UIButton) {
+        thirdQuestion.buttonPressed()
+        thirdQuestionView.isHidden = true
     }
     
 }
